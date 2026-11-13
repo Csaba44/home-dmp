@@ -1,5 +1,15 @@
 from pydantic import SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from pathlib import Path
+from pydantic import BaseModel
+import secrets
+
+CONFIG_FILE = Path("/app/data/config.json")
+
+
+class AppConfig(BaseModel):
+    ntfy_topic: str | None = None
+    notify_on_finish: bool = True
 
 
 class Settings(BaseSettings):
@@ -9,7 +19,21 @@ class Settings(BaseSettings):
     mqtt_user: str
     mqtt_password: SecretStr
 
-    ntfy_topic: str
+
+def save(cfg: AppConfig) -> None:
+    CONFIG_FILE.parent.mkdir(parents=True, exist_ok=True)
+    CONFIG_FILE.write_text(cfg.model_dump_json(indent=2))
+
+
+def load() -> AppConfig:
+    if CONFIG_FILE.exists():
+        return AppConfig.model_validate_json(CONFIG_FILE.read_text())
+    return AppConfig()
 
 
 settings = Settings()
+
+cfg = load()
+if cfg.ntfy_topic is None:
+    cfg.ntfy_topic = f"home-dmp-{secrets.token_urlsafe(16)}"
+    save(cfg)

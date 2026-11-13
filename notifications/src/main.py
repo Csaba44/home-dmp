@@ -10,6 +10,7 @@ from mqtt.client import mqttc
 from notifications import NOTIFICATIONS
 
 from loguru import logger
+from config import cfg
 
 
 def on_connect(
@@ -24,6 +25,9 @@ def on_connect(
 
 
 def on_message(client: mqtt.Client, userdata: Any, msg: MQTTMessage) -> None:
+    if msg.retain:
+        logger.info(f"Skipping retained message: payload={msg.payload!r}")
+        return
     logger.info(f"topic={msg.topic} retain={msg.retain} payload={msg.payload!r}")
     if msg.topic in NOTIFICATIONS:
         NOTIFICATIONS[msg.topic](json.loads(msg.payload.decode()))
@@ -32,6 +36,7 @@ def on_message(client: mqtt.Client, userdata: Any, msg: MQTTMessage) -> None:
 def main() -> None:
     logger.add("logs/app.log", rotation="10 MB", retention="14 days")
     print("Notification services - started")
+    print(f"ntfy.sh topic: {cfg.ntfy_topic}")
 
     mqttc.on_connect = on_connect
     mqttc.on_message = on_message
