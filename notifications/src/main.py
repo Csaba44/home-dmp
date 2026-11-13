@@ -2,15 +2,14 @@ import json
 from typing import Any
 
 import paho.mqtt.client as mqtt
+from loguru import logger
 from paho.mqtt.client import ConnectFlags, MQTTMessage
 from paho.mqtt.properties import Properties
 from paho.mqtt.reasoncodes import ReasonCode
 
+from config import cfg
 from mqtt.client import mqttc
 from notifications import NOTIFICATIONS
-
-from loguru import logger
-from config import cfg
 
 
 def on_connect(
