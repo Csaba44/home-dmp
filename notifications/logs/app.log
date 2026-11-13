@@ -1,0 +1,11 @@
+2026-11-13 23:30:45.155 +00:00 | INFO     | __main__:main:34 - Notification services - started
+2026-11-13 23:30:45.964 +00:00 | INFO     | __main__:main:34 - Notification services - started
+2026-11-13 23:32:22.996 +00:00 | INFO     | __main__:on_message:27 - topic=home/dmp/3d/print_info retain=False payload=b'{"print_name": "asdasd", "progress": 50, "timestamp": "2026-11-13T19:40:48+00:00"}'
+2026-11-13 23:32:28.287 +00:00 | INFO     | __main__:on_message:27 - topic=home/dmp/3d/print_info retain=False payload=b'{"print_name": "asdasd", "progress": 50, "timestamp": "2026-11-13T19:40:48+00:00"}'
+2026-11-13 23:32:29.100 +00:00 | INFO     | __main__:on_message:27 - topic=home/dmp/3d/print_info retain=False payload=b'{"print_name": "asdasd", "progress": 50, "timestamp": "2026-11-13T19:40:48+00:00"}'
+2026-11-13 23:32:29.249 +00:00 | INFO     | __main__:on_message:27 - topic=home/dmp/3d/print_info retain=False payload=b'{"print_name": "asdasd", "progress": 50, "timestamp": "2026-11-13T19:40:48+00:00"}'
+2026-11-13 23:33:01.282 +00:00 | INFO     | __main__:on_message:27 - topic=home/dmp/3d/print_info retain=False payload=b'{"print_name": "asdasd", "progress": 50, "timestamp": "2026-11-13T19:40:48+00:00"}'
+2026-11-13 23:33:07.947 +00:00 | INFO     | __main__:on_message:27 - topic=home/dmp/3d/print_info retain=False payload=b'{"print_name": "asdasd", "progress": 50, "timestamp": "2026-11-13T19:40:48+00:00"}'
+2026-11-13 23:33:32.866 +00:00 | INFO     | __main__:on_message:27 - topic=home/dmp/3d/print_info retain=False payload=b'{"print_name": "asdasd", "progress": 50, "timestamp": "2026-11-13T19:40:48+00:00"}'
+2026-11-13 23:33:37.768 +00:00 | INFO     | __main__:on_message:27 - topic=home/dmp/3d/print_info retain=False payload=b'{"print_name": "asdasd", "progress": 50, "timestamp": "2026-11-13T19:40:48+00:00"}'
+2026-11-13 23:33:38.569 +00:00 | INFO     | __main__:on_message:27 - topic=home/dmp/3d/print_info retain=False payload=b'{"print_name": "asdasd", "progress": 50, "timestamp": "2026-11-13T19:40:48+00:00"}'

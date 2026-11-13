@@ -5,5 +5,15 @@ services:
       target: dev
     volumes:
       - ./edge-services:/app:rw
+      - ./logs:/app/logs
     env_file:
-      - ./edge-services/.env
+      - .env
+  notifications:
+    build:
+      context: notifications
+      target: dev
+    volumes:
+      - ./notifications:/app:rw
+      - ./logs:/app/logs
+    env_file:
+      - .env

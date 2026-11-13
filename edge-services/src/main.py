@@ -27,7 +27,7 @@ def on_message(client: mqtt.Client, userdata: Any, msg: MQTTMessage) -> None:
 
 
 def main() -> None:
-    print("Hello Edge")
+    print("Edge services - started")
 
     mqttc.on_connect = on_connect
     mqttc.on_message = on_message

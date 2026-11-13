@@ -11,7 +11,7 @@ PUBLISH_TOPIC = "home/dmp/3d/print_info"
 @dataclass
 class PrintProgress:
     print_name: str
-    progress: float
+    progress: int
     timestamp: datetime
 
     def publish(self, client: mqtt.Client) -> None:
@@ -27,6 +27,6 @@ def parse_print_info(payload: dict) -> PrintProgress:
 
     return PrintProgress(
         print_name=name,
-        progress=float(payload["progress"]),
+        progress=int(payload["progress"]),
         timestamp=datetime.fromtimestamp(payload["_timestamp"], tz=UTC),
     )
