@@ -11,4 +11,4 @@ RUN python -m pip install -r requirements.txt
 FROM base AS dev
 COPY requirements-dev.txt .
 RUN python -m pip install -r requirements-dev.txt
-CMD ["watchfiles", "python /app/main.py", "/app"]
+CMD ["watchfiles", "python /app/src/main.py", "/app"]
