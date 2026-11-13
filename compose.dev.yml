@@ -5,4 +5,5 @@ services:
       target: dev
     volumes:
       - ./edge-services:/app:rw
-    
+    env_file:
+      - ./edge-services/.env

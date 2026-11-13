@@ -1,3 +1,5 @@
+from config import settings
+
 def main() -> None:
   print("Hello Edge")
 
