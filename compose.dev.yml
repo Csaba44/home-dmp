@@ -1,0 +1,8 @@
+services:
+  edge:
+    build:
+      context: edge-services
+      target: dev
+    volumes:
+      - ./edge-services:/app:rw
+    
