@@ -1,6 +1,6 @@
 import json
 
-from models.models import PARSERS
+from models import PARSERS
 from mqtt.client import mqttc
 
 

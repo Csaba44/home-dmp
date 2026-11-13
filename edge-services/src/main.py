@@ -1,7 +1,7 @@
 from typing import Any
 
 import paho.mqtt.client as mqtt
-from models.models import PARSERS
+from models import PARSERS
 from mqtt.client import mqttc
 from normalizer.normalize import normalize
 from paho.mqtt.client import ConnectFlags, MQTTMessage
