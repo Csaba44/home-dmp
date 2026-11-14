@@ -10,6 +10,8 @@ CONFIG_FILE = Path("~/.homefloor/notifications-config.json").expanduser()
 class AppConfig(BaseModel):
     mqtt_topic: str = "homefloor/3d"
 
+    timezone: str | None = None
+
     ntfy_topic_prefix: str = "homefloor"
     ntfy_topic: str | None = None
 

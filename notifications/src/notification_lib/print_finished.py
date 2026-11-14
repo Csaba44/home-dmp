@@ -1,7 +1,9 @@
-from datetime import datetime
+from datetime import UTC, datetime
+from zoneinfo import ZoneInfo
 
 from loguru import logger
 
+from config import cfg
 from notify import notify
 
 
@@ -13,7 +15,12 @@ def on_progress_change(payload: dict) -> None:
 
         time = "?"
         try:
-            time = datetime.fromisoformat(payload["timestamp"]).strftime("%H:%M")
+            timestamp: datetime = (
+                datetime.fromisoformat(payload["timestamp"])
+                .replace(tzinfo=UTC)
+                .astimezone(ZoneInfo(cfg.timezone) if cfg.timezone else None)
+            )
+            time = timestamp.strftime("%H:%M")
         except (ValueError, TypeError, KeyError):
             logger.warning("Bad timestamp: {!r}", payload.get("timestamp"))
 
