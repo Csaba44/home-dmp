@@ -3,7 +3,7 @@ from pathlib import Path
 from pydantic import BaseModel, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-CONFIG_FILE = Path("/var/lib/homefloor/config.json")
+CONFIG_FILE = Path("~/.homefloor/edge-config.json").expanduser()
 
 
 class AppConfig(BaseModel):
@@ -32,3 +32,4 @@ def load() -> AppConfig:
 settings = Settings()
 
 cfg = load()
+save(cfg)

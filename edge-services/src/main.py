@@ -1,3 +1,4 @@
+from pathlib import Path
 from typing import Any
 
 import paho.mqtt.client as mqtt
@@ -30,7 +31,7 @@ def on_message(client: mqtt.Client, userdata: Any, msg: MQTTMessage) -> None:
 
 def main() -> None:
     logger.add(
-        "/var/lib/homefloor/log-edge.txt",
+        Path("~/.homefloor/log-edge.txt").expanduser(),
         rotation="10 MB",
         retention="14 days",
     )

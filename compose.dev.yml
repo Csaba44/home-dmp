@@ -6,7 +6,7 @@ services:
     volumes:
       - ./edge-services:/app:rw
       - ./edge-services/logs:/app/logs
-      - ./homefloor-data:/var/lib/homefloor
+      - ./homefloor-data:/root/.homefloor
     env_file:
       - .env
   notifications:
@@ -16,6 +16,6 @@ services:
     volumes:
       - ./notifications:/app:rw
       - ./notifications/logs:/app/logs
-      - ./homefloor-data:/var/lib/homefloor
+      - ./homefloor-data:/root/.homefloor
     env_file:
       - .env
