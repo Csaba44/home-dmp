@@ -3,9 +3,10 @@ from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 
 import paho.mqtt.client as mqtt
+from config import cfg
 
 MATCH_TOPICS = ["octoPrint/progress/printing"]
-PUBLISH_TOPIC = "home/dmp/3d/print_info"
+PUBLISH_TOPIC = f"{cfg.mqtt_topic}/print_info"
 
 
 @dataclass

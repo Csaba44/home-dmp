@@ -8,6 +8,8 @@ CONFIG_FILE = Path("/var/lib/homefloor/config.json")
 
 
 class AppConfig(BaseModel):
+    mqtt_topic: str = "homefloor/3d"
+
     ntfy_topic_prefix: str = "homefloor"
     ntfy_topic: str | None = None
     notify_on_finish: bool = True
