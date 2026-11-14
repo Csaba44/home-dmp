@@ -1,0 +1,27 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Build edge-services
+        run: make build
+
+      - name: Zip release folder
+        shell: bash
+        run: tar czf homefloor.tar.gz bin
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: homefloor.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
