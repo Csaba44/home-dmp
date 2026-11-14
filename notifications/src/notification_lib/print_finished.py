@@ -2,7 +2,6 @@ from datetime import datetime
 
 from loguru import logger
 
-from config import cfg
 from notify import notify
 
 
