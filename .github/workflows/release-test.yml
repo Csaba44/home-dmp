@@ -4,6 +4,9 @@ on:
   workflow_dispatch: # Allows manual triggering from the Actions tab
 
 
+permissions:
+  contents: write
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,7 +17,7 @@ jobs:
       - name: Build edge-services
         run: make build
 
-      - name: Zip release folder
+      - name: Compress release folder
         shell: bash
         run: tar czf homefloor.tar.gz bin
 
