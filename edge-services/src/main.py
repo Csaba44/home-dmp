@@ -1,12 +1,14 @@
 from typing import Any
 
 import paho.mqtt.client as mqtt
-from models import PARSERS
-from mqtt.client import mqttc
-from normalizer.normalize import normalize
+from loguru import logger
 from paho.mqtt.client import ConnectFlags, MQTTMessage
 from paho.mqtt.properties import Properties
 from paho.mqtt.reasoncodes import ReasonCode
+
+from models import PARSERS
+from mqtt.client import mqttc
+from normalizer.normalize import normalize
 
 
 def on_connect(
@@ -27,6 +29,11 @@ def on_message(client: mqtt.Client, userdata: Any, msg: MQTTMessage) -> None:
 
 
 def main() -> None:
+    logger.add(
+        "/var/lib/homefloor/log-edge.txt",
+        rotation="10 MB",
+        retention="14 days",
+    )
     print("Edge services - started")
 
     mqttc.on_connect = on_connect

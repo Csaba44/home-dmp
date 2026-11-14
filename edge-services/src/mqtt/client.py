@@ -1,6 +1,7 @@
 import paho.mqtt.client as mqtt
-from config import settings
 from paho.mqtt.enums import CallbackAPIVersion
+
+from config import settings
 
 mqttc = mqtt.Client(CallbackAPIVersion.VERSION2)
 

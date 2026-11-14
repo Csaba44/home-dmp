@@ -1,0 +1,17 @@
+src = ["edge-services/src", "notifications/src"]
+
+line-length = 100
+target-version = "py311"
+
+[lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes: unused imports/variables, undefined names
+    "I",   # import sorting
+    "B",   # common bug patterns (bare except, mutable defaults, ...)
+    "UP",  # modern Python syntax
+]
+
+[format]
+quote-style = "double"
+indent-style = "space"

@@ -3,6 +3,8 @@ from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 
 import paho.mqtt.client as mqtt
+from loguru import logger
+
 from config import cfg
 
 MATCH_TOPICS = ["octoPrint/progress/printing"]
@@ -22,9 +24,13 @@ class PrintProgress:
 
 
 def parse_print_info(payload: dict) -> PrintProgress:
-    name = payload["path"].split("/")[-1]  # "Bottom_Hex_SM_PLA_15m5s.gcode"
-    name = name.removesuffix(".gcode")  # "Bottom_Hex_SM_PLA_15m5s"
-    name = name.rsplit("_", 1)[0]
+    name = "unknown"
+    try:
+        name = payload["path"].split("/")[-1]  # "Bottom_Hex_SM_PLA_15m5s.gcode"
+        name = name.removesuffix(".gcode")  # "Bottom_Hex_SM_PLA_15m5s"
+        name = name.rsplit("_", 1)[0]
+    except (KeyError, AttributeError):
+        logger.warning(f"path not in correct format - payload = {payload}")
 
     return PrintProgress(
         print_name=name,

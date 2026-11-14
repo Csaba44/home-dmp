@@ -1,6 +1,3 @@
-from pydantic import SecretStr
-from pydantic_settings import BaseSettings, SettingsConfigDict
-
 from pathlib import Path
 
 from pydantic import BaseModel, SecretStr
