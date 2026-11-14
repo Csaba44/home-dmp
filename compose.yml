@@ -1,0 +1,7 @@
+services:
+  edge:
+    build:
+      context: edge-services
+      target: build
+    volumes:
+      - ./bin:/app/edge-services/dist
