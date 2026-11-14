@@ -20,11 +20,14 @@ jobs:
 
       - name: Compress release folder
         shell: bash
-        run: tar czf homefloor.tar.gz bin
+        run: |
+          mkdir homefloor
+          cp bin/* homefloor/
+          zip -r homefloor-${{ github.ref_name }}.zip homefloor
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: homefloor.tar.gz
+          files: homefloor-${{ github.ref_name }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
