@@ -20,7 +20,7 @@ def on_connect(
     reason_code: ReasonCode,
     properties: Properties | None,
 ) -> None:
-    for topic in NOTIFICATIONS:
+    for topic in {topic for topic, _ in NOTIFICATIONS.values()}:
         client.subscribe(topic, 1)
 
 
@@ -29,8 +29,10 @@ def on_message(client: mqtt.Client, userdata: Any, msg: MQTTMessage) -> None:
         logger.info(f"Skipping retained message: payload={msg.payload!r}")
         return
     logger.info(f"topic={msg.topic} retain={msg.retain} payload={msg.payload!r}")
-    if msg.topic in NOTIFICATIONS:
-        NOTIFICATIONS[msg.topic](json.loads(msg.payload.decode()))
+    payload = json.loads(msg.payload)
+    for name, (topic, handler) in NOTIFICATIONS.items():
+        if topic == msg.topic and cfg.notifications.get(name, False):
+            handler(payload)
 
 
 def main() -> None:

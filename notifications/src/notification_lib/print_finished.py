@@ -7,8 +7,6 @@ from notify import notify
 
 
 def on_progress_change(payload: dict) -> None:
-    if not cfg.notify_on_finish:
-        return
 
     try:
         if payload["progress"] != 100:

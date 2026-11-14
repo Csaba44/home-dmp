@@ -12,7 +12,8 @@ class AppConfig(BaseModel):
 
     ntfy_topic_prefix: str = "homefloor"
     ntfy_topic: str | None = None
-    notify_on_finish: bool = True
+
+    notifications: dict[str, bool] = {}
 
 
 class Settings(BaseSettings):
