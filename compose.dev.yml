@@ -5,7 +5,8 @@ services:
       target: dev
     volumes:
       - ./edge-services:/app:rw
-      - ./logs:/app/logs
+      - ./edge-services/logs:/app/logs
+      - ./homefloor-data:/var/lib/homefloor
     env_file:
       - .env
   notifications:
@@ -14,6 +15,7 @@ services:
       target: dev
     volumes:
       - ./notifications:/app:rw
-      - ./logs:/app/logs
+      - ./notifications/logs:/app/logs
+      - ./homefloor-data:/var/lib/homefloor
     env_file:
       - .env

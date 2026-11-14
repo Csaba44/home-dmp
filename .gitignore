@@ -2,3 +2,9 @@
 
 *.env
 */.env
+
+notifications/logs
+edge-services/logs
+logs
+
+homefloor-data

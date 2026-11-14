@@ -4,10 +4,11 @@ from pathlib import Path
 from pydantic import BaseModel, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-CONFIG_FILE = Path("/app/data/config.json")
+CONFIG_FILE = Path("/var/lib/homefloor/config.json")
 
 
 class AppConfig(BaseModel):
+    ntfy_topic_prefix: str = "homefloor"
     ntfy_topic: str | None = None
     notify_on_finish: bool = True
 
@@ -35,5 +36,5 @@ settings = Settings()
 
 cfg = load()
 if cfg.ntfy_topic is None:
-    cfg.ntfy_topic = f"home-dmp-{secrets.token_urlsafe(16)}"
+    cfg.ntfy_topic = secrets.token_urlsafe(8)
     save(cfg)

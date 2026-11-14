@@ -1,4 +1,0 @@
-{
-  ntfy_topic: home-dmp-csabi,
-  notify_on_finish: true
-} data/config.json

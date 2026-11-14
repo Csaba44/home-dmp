@@ -35,7 +35,7 @@ def on_message(client: mqtt.Client, userdata: Any, msg: MQTTMessage) -> None:
 def main() -> None:
     logger.add("logs/app.log", rotation="10 MB", retention="14 days")
     print("Notification services - started")
-    print(f"ntfy.sh topic: {cfg.ntfy_topic}")
+    print(f"ntfy.sh topic: {cfg.ntfy_topic_prefix}-{cfg.ntfy_topic}")
 
     mqttc.on_connect = on_connect
     mqttc.on_message = on_message
