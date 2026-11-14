@@ -2,3 +2,4 @@ paho-mqtt
 pyright
 requests
 loguru
+pydantic-settings

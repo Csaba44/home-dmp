@@ -1,4 +1,3 @@
 watchfiles
 pytest
-pydantic-settings
 ruff
